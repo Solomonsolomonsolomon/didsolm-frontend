@@ -1,6 +1,6 @@
 import Admin from "./components/Admin/admin";
 import DataContext, { Provider } from "./components/context/dataContext";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, HashRouter } from "react-router-dom";
 import { useContext } from "react";
 import useForm from "./utils/useForm";
 import createForm from "./utils/createForm";
@@ -37,7 +37,7 @@ export default function App() {
   // };
   return (
     <Provider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" index element={<Home />}></Route>
           <Route path="/home" element={<Home />}>
@@ -47,7 +47,7 @@ export default function App() {
           <Route path="/admin" element={<Admin />}></Route>
           <Route path="*" element={<div>404 not found Route</div>}></Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 }
