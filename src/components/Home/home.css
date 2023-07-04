@@ -1,0 +1,31 @@
+h1 {
+  color: black;
+  text-align: center;
+  font-family: Rajdhani, Verdana, Geneva, Tahoma, sans-serif;
+  position: relative;
+}
+
+#logo {
+  width: 120px;
+
+  top: 0;
+}
+#cartSign {
+  width: 40px;
+  height: 40px;
+  right: 3%;
+  top: 4%;
+}
+.flexlogos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+button {
+  background-color: purple;
+  color: white;
+  padding: 1.6%;
+  border: none;
+  font-family: Rajdhani, Verdana, Geneva, Tahoma, sans-serif;
+}
