@@ -1,32 +1,27 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import logo from "./../../images/didsolmkiddies_logo.jpg";
+
+import Headers from "./headers.home";
+import Slider from "./sliders.home";
+import SearchBar from "./searchBar.home";
+import Carousel from "./carousel.home";
+import Categories from "./categories.home";
 import cartLogo from "./../../images/shopping-cart.png";
-import "./home.css";
-import { Outlet } from "react-router-dom";
+import drawing from "./../../images/41351737340_e3fc1e94e5_o.jpg";
+import clothesOnHanger from "./../../images/37827022501_d5dd06e1af_o.jpg";
+
+
+import { Outlet, Link } from "react-router-dom";
 export default function Home() {
   return (
-    <>
-      <div className="flexlogos">
-        <button>login</button>
-        <img src={logo} id="logo" alt="logo" />
-        <img id="cartSign" src={cartLogo} alt="cart sign" />
-      </div>
-      <h1>👋 Hi there!!!Welcome to Didsolm kiddies Affairs</h1>
-      <button id="tour">Want a tour?</button>
-   <h1>POPULAR</h1>
-   <div>
-    <img src="" alt="img" />
-    <p>name</p>
-    <p>price</p>
-   </div>
-   <h1>CATEGORIES</h1>
-   <div>BABY</div>
-   <div>NEW BORN</div>
-   <div>BATHING</div>
-   <div>BACK TO SCHOOL</div>
-   <div>FASHION</div>
-    
-      <Outlet></Outlet>
-    </>
+    <div className="h-[100%] w-[100%] relative">
+      <Headers />
+      <Slider />
+      <SearchBar />
+      <Carousel />
+      <Categories />
+
+      {/* div end */}
+    </div>
   );
 }
