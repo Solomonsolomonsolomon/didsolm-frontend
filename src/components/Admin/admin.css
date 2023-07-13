@@ -25,12 +25,11 @@ form span input {
   text-align: center;
 }
 h2 {
-  border-top: 1px solid;
-  font-family: Rajdhani, Verdana, Geneva, Tahoma, sans-serif;
+ 
   text-align: center;
 }
 label {
-  font-family: Rajdhani, Verdana, Geneva, Tahoma, sans-serif;
+
 }
 .orangeBtn {
   background-color: rgb(223, 161, 48);
@@ -54,6 +53,4 @@ label {
   flex-wrap: wrap;
 }
 
-p {
-  font-family: Rajdhani, Verdana, Geneva, Tahoma, sans-serif;
-}
+
