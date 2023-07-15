@@ -1,28 +1,27 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Headers from "../Home/headers.home";
 import Slider from "../Home/sliders.home";
+import { loginFetch, isLoggedIn, handleLoginRedirect } from "./performlogin";
+import LoginForm from "./login.form";
 export default function Login() {
+  let [inputValues, setInputValues] = useState({});
+  function handleLoginFormEntries(e) {
+    Object.assign(inputValues, { [e.target.name]: e.target.value });
+  }
+  function handleLoginFormSubmission(e) {
+    e.preventDefault();
+    loginFetch(inputValues);
+    handleLoginRedirect()
+  }
+
   return (
     <div className="h-[100%] border border-black">
       <Headers />
       <Slider />
-      <div className="container flex justify-center  items-center content-center h-[100%]">
-        <form className="border-black border p-10 ">
-          <input
-            type="email"
-            placeholder="email"
-            className="placeholder:text-center"
-          />
-          <input
-            type="password"
-            name=""
-            id=""
-            placeholder="password"
-            className="placeholder:text-center"
-          />
-          <button className="bg-blue-900 border text-[12px] p-1 text-white">login</button>
-        </form>
-      </div>
+      <LoginForm
+        handleLoginFormSubmission={handleLoginFormSubmission}
+        handleLoginFormEntries={handleLoginFormEntries}
+      />
     </div>
   );
 }
