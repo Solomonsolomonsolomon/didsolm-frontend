@@ -3,6 +3,8 @@ import Input from "../input/input";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
+import Headers from './../Home/headers.home'
+import Slider from "../Home/sliders.home";
 import DataContext from "../context/dataContext";
 import { enterCustomSize } from "./../../utils/createCustomSize";
 import { convertImageToBase64 } from "./../../utils/handleImg";
@@ -11,6 +13,8 @@ export default function Admin() {
 
   return (
     <>
+    <Headers/>
+    <Slider/>
       <h1>Admin Page</h1>
       <h1>Welcome User</h1>
 

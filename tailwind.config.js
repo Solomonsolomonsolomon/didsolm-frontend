@@ -32,7 +32,7 @@ export default {
         },
       },
       animation: {
-        animateSlider: "slider 3s linear 1 forwards",
+        animateSlider: "slider 1s linear 1 forwards",
         giveColor: "color 1s linear 1 forwards",
       },
     },

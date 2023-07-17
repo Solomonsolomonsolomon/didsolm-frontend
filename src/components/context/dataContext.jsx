@@ -1,12 +1,15 @@
 import { createContext, useState, useEffect, Children } from "react";
 
 const DataContext = createContext();
+
 export function Provider({ children }) {
+  let [toggleSlider, setSliderToggle] = useState(false);
   return (
     <DataContext.Provider
       value={{
-        name: "wow",
-        hi: "hellp you",
+        baseUrl: `http://localhost:5678`,
+        toggleSlider: toggleSlider,
+        setSliderToggle: setSliderToggle,
       }}
     >
       {children}
