@@ -1,17 +1,22 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import Headers from "../Home/headers.home";
 import Slider from "../Home/sliders.home";
 import { loginFetch, isLoggedIn, handleLoginRedirect } from "./performlogin";
 import LoginForm from "./login.form";
+import DataContext from "../context/dataContext";
+
+
 export default function Login() {
+
   let [inputValues, setInputValues] = useState({});
   function handleLoginFormEntries(e) {
     Object.assign(inputValues, { [e.target.name]: e.target.value });
   }
   function handleLoginFormSubmission(e) {
     e.preventDefault();
-    loginFetch(inputValues);
-    handleLoginRedirect()
+    loginFetch(inputValues).then(() => {
+      handleLoginRedirect();
+    });
   }
 
   return (

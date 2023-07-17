@@ -114,3 +114,7 @@ export async function isLoggedIn() {
       return false;
     });
 }
+
+// export async function isLoggedIn(){
+//   return getStoredInfo(({accessToken,refreshToken}))
+// }
