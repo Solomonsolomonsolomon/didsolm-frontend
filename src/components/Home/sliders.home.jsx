@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import Login from "../Login/Login";
-import { isLoggedIn, getStoredInfo } from "./../Login/performlogin";
+import { isLoggedIn, getStoredInfo,decodeToken} from "./../Login/performlogin";
 import { useContext, useEffect, useState } from "react";
 import DataContext from "../context/dataContext";
 
 function Slider() {
+  decodeToken()
   let [loginStatus, setLoginStatus] = useState(false);
   let [linkClicked, setLinkClicked] = useState(new Date());
 

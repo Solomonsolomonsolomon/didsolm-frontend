@@ -1,4 +1,7 @@
+
 import Login from "./Login";
+
+//import { decode } from "jsonwebtoken";
 
 let baseUrl = "http://localhost:5678";
 
@@ -118,3 +121,14 @@ export async function isLoggedIn() {
 // export async function isLoggedIn(){
 //   return getStoredInfo(({accessToken,refreshToken}))
 // }
+export async function decodeToken() {
+  getStoredInfo().then(async ({ accessToken }) => {
+    try {
+    //let token = await decode(accessToken);
+      //console.log(token);
+      console.log(accessToken)
+    } catch (error) {
+      return "accesstoken not valid";
+    }
+  });
+}

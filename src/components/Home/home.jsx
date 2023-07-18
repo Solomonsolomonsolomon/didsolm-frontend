@@ -13,11 +13,10 @@ import DataContext from "../context/dataContext";
 
 import { Outlet, Link } from "react-router-dom";
 export default function Home() {
-  let {baseUrl}=useContext(DataContext);
-  console.log(baseUrl) 
-  
-  function checkLocation() {
+  let { baseUrl } = useContext(DataContext);
+  console.log(baseUrl);
 
+  function checkLocation() {
     console.log(location.protocol, location.hostname, location.href);
     if (location.href.includes(`#/logout`)) {
       console.log("working");
@@ -27,10 +26,13 @@ export default function Home() {
   }
   checkLocation();
   return (
-    <div className="h-[100%] w-[100%] relative">
-      <Headers />
-      <Slider />
-      <SearchBar />
+    <div className="h-[100%] w-[100%] relative h-[500vh]">
+      <div className="">
+        <Headers />
+        <Slider />
+        <SearchBar />
+      </div>
+
       <Carousel />
       <Categories />
 
