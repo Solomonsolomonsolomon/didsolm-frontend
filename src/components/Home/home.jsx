@@ -26,13 +26,10 @@ export default function Home() {
   }
   checkLocation();
   return (
-    <div className="h-[100%] w-[100%] relative h-[500vh]">
-      <div className="">
-        <Headers />
-        <Slider />
-        <SearchBar />
-      </div>
-
+    <div className="h-[100%] w-[100%] relative">
+      <Headers />
+      <Slider />
+      <SearchBar />
       <Carousel />
       <Categories />
 

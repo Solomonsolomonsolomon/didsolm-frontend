@@ -8,6 +8,7 @@ export default function Headers({}) {
   let { toggleSlider } = useContext(DataContext);
   return (
     <Fragment>
+
       <div className="header flex justify-around flex-wrap-reverse bottom-1 items-start ">
         <img src={logo} alt="Logo" className="lg:w-20 w-10" />
         <p className="lg:text-[35px]  text-center md:text-[20px] sm:text-[15px]">
@@ -20,7 +21,7 @@ export default function Headers({}) {
         />
 
         <div
-          className="hamburger block lg: my-1 "
+          className="hamburger block lg:  "
           onClick={toggleSlider ? removeSlider : hi}
         >
           <span className="bg-black w-5 h-1 animate-bounce m-1 block lg:w-7"></span>
@@ -28,6 +29,7 @@ export default function Headers({}) {
           <span className="bg-black w-7 h-1 m-1 block animate-bounce lg:w-9 lg:my-2"></span>
         </div>
       </div>
+      
     </Fragment>
   );
 }

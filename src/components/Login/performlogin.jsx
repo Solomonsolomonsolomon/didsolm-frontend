@@ -1,7 +1,5 @@
-
 import Login from "./Login";
-
-//import { decode } from "jsonwebtoken";
+import jwt_decode from "jwt-decode";
 
 let baseUrl = "http://localhost:5678";
 
@@ -89,46 +87,67 @@ export async function handleSilentAuth() {
   });
 }
 
-export async function isLoggedIn() {
-  return getStoredInfo()
-    .then(async ({ accessToken }) => {
-      let res = await fetch(`${baseUrl}/`, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      let json = await res.json();
-      if (res.ok) {
-        return true;
-      } else if (res.status == 401) {
-        return handleSilentAuth()
-          .then((e) => {
-            return true;
-          })
-          .catch((err) => {
-            return false;
-          });
-      } else {
-        return false;
-      }
-    })
-    .catch((err) => {
-      return false;
-    });
-}
-
-// export async function isLoggedIn(){
-//   return getStoredInfo(({accessToken,refreshToken}))
+// export async function isLoggedIn() {
+//   return getStoredInfo()
+//     .then(async ({ accessToken }) => {
+//       let res = await fetch(`${baseUrl}/`, {
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: `Bearer ${accessToken}`,
+//         },
+//       });
+//       let json = await res.json();
+//       if (res.ok) {
+//         return true;
+//       } else if (res.status == 401) {
+//         return handleSilentAuth()
+//           .then((e) => {
+//             return true;
+//           })
+//           .catch((err) => {
+//             return false;
+//           });
+//       } else {
+//         return false;
+//       }
+//     })
+//     .catch((err) => {
+//       return false;
+//     });
 // }
+
 export async function decodeToken() {
-  getStoredInfo().then(async ({ accessToken }) => {
+  return getStoredInfo().then(async ({ accessToken }) => {
     try {
-    //let token = await decode(accessToken);
-      //console.log(token);
-      console.log(accessToken)
+      let token = await jwt_decode(accessToken);
+      if (!token) {
+        throw new Error("false");
+      }
+      let jwtExpiryDate = token.exp;
+      if (jwtExpiryDate < Math.floor(Date.now() / 1000)) {
+        throw new Error("false");
+      } else {
+        return { status: true, accessToken };
+      }
     } catch (error) {
-      return "accesstoken not valid";
+      return { status: false, accessToken };
     }
   });
+}
+
+export async function isLoggedIn() {
+  return decodeToken()
+    .then((e) => {
+      let i;
+      e.status ? (i = true) : (i = false);
+      return i;
+    })
+    .catch(async () => {
+      try {
+        await handleSilentAuth();
+        return true;
+      } catch {
+        return false;
+      }
+    });
 }

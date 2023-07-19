@@ -23,6 +23,8 @@ export function enterCustomSize() {
     let option = document.createElement("option");
     option.value = input.value;
     option.textContent = input.value;
+    option.setAttribute("name", "opt");
+
     size.prepend(option);
     p.textContent =
       'you"ve added a custom size..now select it from the dropdown';
