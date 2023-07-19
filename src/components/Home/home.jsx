@@ -13,11 +13,10 @@ import DataContext from "../context/dataContext";
 
 import { Outlet, Link } from "react-router-dom";
 export default function Home() {
-  let {baseUrl}=useContext(DataContext);
-  console.log(baseUrl) 
-  
-  function checkLocation() {
+  let { baseUrl } = useContext(DataContext);
+  console.log(baseUrl);
 
+  function checkLocation() {
     console.log(location.protocol, location.hostname, location.href);
     if (location.href.includes(`#/logout`)) {
       console.log("working");

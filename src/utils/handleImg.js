@@ -5,7 +5,7 @@ export function convertImageToBase64(blob) {
       if (!blob) {
         throw new Error("no file selected");
       }
-      console.log(blob);
+
       let reader = new FileReader();
       reader.readAsDataURL(blob);
       reader.onloadend = () => {
@@ -14,6 +14,6 @@ export function convertImageToBase64(blob) {
     });
   } catch (err) {
     console.log("hit");
-    alert(err.message);
+    reject(err.message);
   }
 }

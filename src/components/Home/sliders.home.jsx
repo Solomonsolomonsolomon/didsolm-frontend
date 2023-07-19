@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import Login from "../Login/Login";
-import { isLoggedIn, getStoredInfo } from "./../Login/performlogin";
+import { isLoggedIn, getStoredInfo,decodeToken} from "./../Login/performlogin";
 import { useContext, useEffect, useState } from "react";
 import DataContext from "../context/dataContext";
 
 function Slider() {
+  console.log(isLoggedIn())
+
   let [loginStatus, setLoginStatus] = useState(false);
   let [linkClicked, setLinkClicked] = useState(new Date());
 
@@ -28,7 +30,7 @@ function Slider() {
           to={loginStatus ? "/logout" : "/login"}
           className="text-transparent p-0 m-0 relative "
           id="a1"
-          onClick={true ? removeSlider : handleLinkClick}
+         // onClick={true ? removeSlider : handleLinkClick}
         >
           {loginStatus ? "logout" : "login"}
         </Link>
@@ -54,7 +56,6 @@ function Slider() {
 }
 
 function removeSlider() {
-  console.log("hhhh");
   let slider = document.getElementById("slider");
   let a1 = document.getElementById("a1");
   let a2 = document.getElementById("a2");
